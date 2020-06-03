@@ -1,2 +1,3 @@
-const celebSubmit = document.querySelector('.add-celeb-button');
+const celebSubmit = document.querySelector('.add-celeb');
 celebSubmit.addEventListener('click', () => console.log('Celebrity Added!'));
+

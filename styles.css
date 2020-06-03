@@ -9,7 +9,7 @@
   font-size: 24px;
 }
 
-.add-celeb-button {
+.button {
   box-shadow: 3px 4px 0px 0px #899599;
   background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
   background-color: #ededed;
@@ -25,7 +25,7 @@
   text-shadow: 0px 1px 0px #e1e2ed;
 }
 
-.add-celeb-button:hover {
+.button:hover {
   background: linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
   background-color: #bab1ba;
 }
