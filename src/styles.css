@@ -1,12 +1,22 @@
+header {
+  text-align: center;
+}
+
 #celeb {
   padding: 4px 10px;
   line-height: 27px;
   font-size: 24px;
 }
 
+.celeb {
+  margin: 100px 0;
+  text-align: center;
+}
+
 .label {
   font-family: Arial;
   font-size: 24px;
+  margin: 10px;
 }
 
 .button {
@@ -33,4 +43,9 @@
 .add-celeb-button:active {
   position: relative;
   top: 1px;
+}
+
+.interaction {
+  margin: 20px 0;
+  text-align: center;
 }

@@ -15,16 +15,18 @@
   <main>
     <section>
       <form>
-        <div>
+        <div class="interaction">
           <label class="label">Add a celebrity here:</label>
           <input type="text" id="celeb">
           <button class="add-celeb button">Submit</button>
         </div>
-        <div>
-          <label class="label">I'm ready to play!</label>
-          <a href="rounds1and3.html">
-            <span class="button">Let's go!</span>
-          </a>
+        <div class="interaction">
+          <label class="label" for="start-game">I'm ready to play!</label>
+          <form id="start-game">
+            <button class="button" type="submit" formaction="rounds1and3.html">
+              Let's go!
+            </button>
+          </form>
         </div>
       </form>
     </section>
