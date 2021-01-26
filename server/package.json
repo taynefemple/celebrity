@@ -4,6 +4,8 @@
   "description": "Server for online multiplayer Celebrity game",
   "main": "index.js",
   "scripts": {
+    "start": "node server",
+    "start-dev": "NODE_ENV='development' nodemon server -e html,js,scss --ignore public --ignore client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Wayne Temple",
@@ -13,8 +15,11 @@
   },
   "dependencies": {
     "compression": "^1.7.4",
+    "connect-session-sequelize": "^7.1.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "morgan": "^1.10.0",
+    "pg": "^8.5.1",
     "sequelize": "^6.4.0",
     "socket.io": "^3.1.0"
   }
