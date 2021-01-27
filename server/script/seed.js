@@ -1,7 +1,7 @@
 'use strict';
 
 const db = require('../database');
-const { User } = require('../database/models');
+const { User, Clue } = require('../database/models');
 
 async function seed() {
     await db.sync({ force: true });
@@ -11,7 +11,12 @@ async function seed() {
         User.create({ name: 'Tayne Femple', team: 'Masters' }),
     ]);
 
+    const clues = await Promise.all([
+        Clue.create({ name: 'Sean Connery', hint: 'Hates Alec Trebek' }),
+    ]);
+
     console.log(`seeded ${users.length} users`);
+    console.log(`seeded ${clues.length} clues`);
     console.log(`seeded successfully`);
 }
 
