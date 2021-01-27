@@ -9,10 +9,16 @@ async function seed() {
 
     const users = await Promise.all([
         User.create({ name: 'Tayne Femple', team: 'Masters' }),
+        User.create({ name: 'Flo Jo', team: 'Masters' }),
+        User.create({ name: 'Marky Mark', team: 'Losers' }),
+        User.create({ name: 'Kerry Washingon', team: 'Losers' }),
     ]);
 
     const clues = await Promise.all([
         Clue.create({ name: 'Sean Connery', hint: 'Hates Alec Trebek' }),
+        Clue.create({ name: 'Big Birde'}),
+        Clue.create({ name: 'Carl Sagan', hint: 'space guy' }),
+        Clue.create({ name: 'Barack Obama', hint: '' }),
     ]);
 
     console.log(`seeded ${users.length} users`);
