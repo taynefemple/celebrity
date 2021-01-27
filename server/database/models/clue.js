@@ -1,7 +1,14 @@
-// const User = require('./user');
-// const Clue = require('./clue');
+const Sequelize = require('sequelize');
+const db = require('../database');
 
-// module.exports = {
-//   User,
-//   Clue
-// }
+const Clue = db.define('clue', {
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    hint: {
+        type: Sequelize.STRING,
+    },
+});
+
+module.exports = Clue;
