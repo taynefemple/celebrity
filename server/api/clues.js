@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Clue } = require('../database/models');
 module.exports = router;
 
+// rounds 1 and 3
 router.get('/', async (req, res, next) => {
     try {
         const clues = await Clue.findAll();
@@ -12,5 +13,10 @@ router.get('/', async (req, res, next) => {
 });
 
 router.post('/', async (req, res, next) => {
-    // add clue to db
+    try {
+        const [clue] = Clue.create(req.body);
+        res.json(clue);
+    } catch (err) {
+        next(err);
+    }
 });
