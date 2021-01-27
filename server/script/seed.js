@@ -19,6 +19,8 @@ async function seed() {
         Clue.create({ name: 'Big Birde'}),
         Clue.create({ name: 'Carl Sagan', hint: 'space guy' }),
         Clue.create({ name: 'Barack Obama', hint: '' }),
+        Clue.create({ name: 'Barack Obama', hint: '' }),
+        Clue.create({ name: 'Barack Obama', hint: '' }),
     ]);
 
     console.log(`seeded ${users.length} users`);
