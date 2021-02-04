@@ -16,7 +16,10 @@ celebSubmit.addEventListener('click', async function (evt) {
         mode: 'cors',
         body: JSON.stringify(state),
     })
-    console.log(`Celebrity Added! ${JSON.stringify(state)}`);
+    const foo = response.json();
+    console.log(foo);
+    celebInput.value = '';
+    hintInput.value = '';
 });
 
 // Input fields
