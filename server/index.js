@@ -8,6 +8,7 @@ const db = require('./database');
 const sessionStore = new SequelizeStore({ db });
 const PORT = process.env.PORT || 8080;
 const app = express();
+const cors = require('cors');
 const socketio = require('socket.io');
 module.exports = app;
 
@@ -21,6 +22,8 @@ const createApp = () => {
 
     // compression middleware
     app.use(compression());
+
+    app.use(cors());
 
     // api routes
     app.use('/api', require('./api'));

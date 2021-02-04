@@ -13,8 +13,11 @@ router.get('/', async (req, res, next) => {
 });
 
 router.post('/', async (req, res, next) => {
+    console.log(`HIT POST ROUTE WITH ${JSON.stringify(req.body)}`)
     try {
-        const [clue] = Clue.create(req.body);
+        console.log(`in the try block ${req.body}`)
+        const clue = await Clue.create(req.body);
+        console.log(`THE CLUE: ${clue}`)
         res.json(clue);
     } catch (err) {
         next(err);
