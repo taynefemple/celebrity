@@ -2,7 +2,7 @@
 const state = {
     name: '',
     hint: '',
-}
+};
 
 // submit button
 const celebSubmit = document.querySelector('.add-celeb');
@@ -11,11 +11,11 @@ celebSubmit.addEventListener('click', async function (evt) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Origin': 'http://localhost:8081'
+            Origin: 'http://localhost:8081',
         },
         mode: 'cors',
         body: JSON.stringify(state),
-    })
+    });
     const foo = response.json();
     console.log(foo);
     celebInput.value = '';
@@ -36,5 +36,5 @@ hintInput.addEventListener('input', function (evt) {
 // Start Game Button
 const startGame = document.querySelector('#start-game');
 startGame.addEventListener('click', function (evt) {
-    console.log('Let\'s PLAY!!!!')
+    console.log("Let's PLAY!!!!");
 });

@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" type="text/css" href="./styles.css" />
+    </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="./styles.css" />
-</head>
+    <body>
+        <header>
+            <h1>Celebrity Rounds 1 and 3</h1>
+        </header>
+        <main>
+            <section>
+                <div class="celeb">
+                    OH MY GOSH I'm a dynamically populated celebrity!!!
+                </div>
+            </section>
+        </main>
+        <form class="interaction">
+            <button id="round-start" class="button" type="button">
+                Start The Round!
+            </button>
+            <button id="next-celeb" class="button" type="button">
+                NEXT CELEBRITY!
+            </button>
+            <button id="round-finished" class="button" type="button">
+                Round Finished!
+            </button>
+        </form>
 
-<body>
-  <header>
-    <h1>Celebrity Rounds 1 and 3</h1>
-  </header>
-  <main>
-    <section>
-      <div class="celeb">OH MY GOSH I'm a dynamically populated celebrity!!!</div>
-    </section>
-  </main>
-  <form class="interaction" >
-    <button id="round-start" class="button" type="button">
-      Start The Round!
-    </button>
-    <button id="next-celeb" class="button" type="button">
-      NEXT CELEBRITY!
-    </button>
-    <button id="round-finished" class="button" type="button">
-      Round Finished!
-    </button>
-  </form>
-
-  <script src="./node_modules/socket.io-client/dist/socket.io.js"></script>
-  <script src="soloRound.js"></script>
-</body>
-
+        <script src="./node_modules/socket.io-client/dist/socket.io.js"></script>
+        <script src="soloRound.js"></script>
+    </body>
 </html>
