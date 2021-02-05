@@ -6,6 +6,7 @@ module.exports = router;
 router.get('/', async (req, res, next) => {
     try {
         const clues = await Clue.findAll();
+        console.log(`THE CLUES: ${JSON.stringify(clues)}`)
         res.json(clues);
     } catch (err) {
         next(err);

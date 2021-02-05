@@ -5,8 +5,16 @@
 // socket.on('connect', () => {
 //   console.log(socket.id);
 // });
-document.addEventListener('DOMContentLoaded', function (event) {
+
+const soloRoundState = {
+  clues: []
+}
+
+document.addEventListener('DOMContentLoaded', async function (event) {
+    const clues = await fetch('http://localhost:8080/api/clues')
+      .then((res) => res.json());
     console.log('DOM fully loaded and parsed');
+    console.log(`GOT THE STRINGIFIED CLUES: ${JSON.stringify(clues)}`)
 });
 
 const celeb = document.querySelector('.celeb');
