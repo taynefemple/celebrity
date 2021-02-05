@@ -13,6 +13,9 @@ const soloRoundState = {
 document.addEventListener('DOMContentLoaded', async function (event) {
     const clues = await fetch('http://localhost:8080/api/clues')
       .then((res) => res.json());
+
+    soloRoundState.clues = clues;
+
     console.log('DOM fully loaded and parsed');
     console.log(`GOT THE STRINGIFIED CLUES: ${JSON.stringify(clues)}`)
 });
@@ -22,5 +25,5 @@ const startRound = document.querySelector('#round-start');
 
 startRound.addEventListener('click', function (evt) {
     console.log("Let's PLAY!!!!");
-    celeb.innerHTML = 'John Jacaob Jingelheimer schmidt';
+    celeb.innerHTML = soloRoundState.clues[Math.floor(Math.random() * soloRoundState.clues.length)].name;
 });

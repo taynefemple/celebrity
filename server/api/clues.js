@@ -5,7 +5,9 @@ module.exports = router;
 // rounds 1 and 3
 router.get('/', async (req, res, next) => {
     try {
-        const clues = await Clue.findAll();
+        const clues = await Clue.findAll({
+            attributes: ['id', 'name', 'hint']
+        });
         console.log(`THE CLUES: ${JSON.stringify(clues)}`)
         res.json(clues);
     } catch (err) {
