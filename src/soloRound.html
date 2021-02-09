@@ -12,23 +12,38 @@
             <h1>Celebrity Rounds 1 and 3</h1>
         </header>
         <main>
-            <section>
-                <div class="celeb">
-                    OH MY GOSH I'm a dynamically populated celebrity!!!
-                </div>
+            <section class="clue-box">
+                <div class="celeb">Push start to begin!</div>
+                <div class="hint">Hints (optional) will appear here.</div>
             </section>
         </main>
-        <form class="interaction">
+        <form class="interaction button-list">
             <button id="round-start" class="button" type="button">
                 Start The Round!
             </button>
             <button id="next-celeb" class="button" type="button">
                 NEXT CELEBRITY!
             </button>
-            <button id="round-finished" class="button" type="button">
-                Round Finished!
-            </button>
         </form>
+        <div class="base-timer">
+            <svg
+                class="base-timer__svg"
+                viewBox="0 0 100 100"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <g class="base-timer__circle">
+                    <circle
+                        class="base-timer__path-elapsed"
+                        cx="50"
+                        cy="50"
+                        r="45"
+                    />
+                </g>
+            </svg>
+            <span>
+                <!-- Remaining time label -->
+            </span>
+        </div>
 
         <script src="./node_modules/socket.io-client/dist/socket.io.js"></script>
         <script src="soloRound.js"></script>

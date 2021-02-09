@@ -66,10 +66,10 @@ const startListening = () => {
     // set up our socket control center
     const io = socketio(server, {
         cors: {
-          origin: "http://localhost:8081",
-          credentials: true
-        }
-      });
+            origin: 'http://localhost:8081',
+            credentials: true,
+        },
+    });
     require('./socket')(io);
 };
 

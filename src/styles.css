@@ -10,6 +10,12 @@ header {
 
 .celeb {
     margin: 100px 0;
+    font-size: 3em;
+    text-align: center;
+}
+
+.hint {
+    margin: 100px 0;
     text-align: center;
 }
 
@@ -48,4 +54,32 @@ header {
 .interaction {
     margin: 20px 0;
     text-align: center;
+}
+
+.clue-box {
+    box-sizing: border-box;
+    margin: auto;
+    width: 50%;
+    height: 350px;
+    border: solid #5b6dcd 10px;
+    padding: 5px;
+}
+
+/* Sets the containers height and width */
+.base-timer {
+    position: relative;
+    height: 300px;
+    width: 300px;
+}
+
+/* Removes SVG styling that would hide the time label */
+.base-timer__circle {
+    fill: none;
+    stroke: none;
+}
+
+/* The SVG path that displays the timer's progress */
+.base-timer__path-elapsed {
+    stroke-width: 7px;
+    stroke: grey;
 }

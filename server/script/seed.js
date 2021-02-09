@@ -16,7 +16,7 @@ async function seed() {
 
     const clues = await Promise.all([
         Clue.create({ name: 'Sean Connery', hint: 'Hates Alec Trebek' }),
-        Clue.create({ name: 'Big Birde'}),
+        Clue.create({ name: 'Big Birde' }),
         Clue.create({ name: 'Carl Sagan', hint: 'space guy' }),
         Clue.create({ name: 'Barack Obama', hint: '' }),
         Clue.create({ name: 'Barack Obama', hint: '' }),

@@ -4,6 +4,8 @@ module.exports = (io) => {
             `A socket connection to the server has been made: ${socket.id}`
         );
 
+        socket.on('round over', () => socket.emit('round over'));
+
         socket.on('disconnect', () => {
             console.log(`Connection ${socket.id} has left the building`);
         });
