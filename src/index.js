@@ -7,13 +7,11 @@ const state = {
 // submit button
 const celebSubmit = document.querySelector('.add-celeb');
 celebSubmit.addEventListener('click', async function (evt) {
-    const response = await fetch('http://localhost:8080/api/clues', {
+    const response = await fetch('/api/clues', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            Origin: 'http://localhost:8081',
+            'Content-Type': 'application/json'
         },
-        mode: 'cors',
         body: JSON.stringify(state),
     });
     const foo = response.json();
@@ -33,7 +31,7 @@ hintInput.addEventListener('input', function (evt) {
     state.hint = evt.target.value;
 });
 
-// Start Game Button
+// Start Game Button - REMOVE handled by html default click
 const startGame = document.querySelector('#start-game');
 startGame.addEventListener('click', function (evt) {
     console.log("Let's PLAY!!!!");

@@ -14,8 +14,15 @@ header {
     text-align: center;
 }
 
+#hint {
+    padding: 4px 10px;
+    line-height: 27px;
+    font-size: 24px;
+}
+
 .hint {
     margin: 100px 0;
+    font-size: 3em;
     text-align: center;
 }
 

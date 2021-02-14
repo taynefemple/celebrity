@@ -1,4 +1,4 @@
-const socket = io('http://localhost:8080');
+const socket = io();
 console.log(socket.id); // undefined
 
 socket.on('connect', () => {

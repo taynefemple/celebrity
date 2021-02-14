@@ -2,13 +2,13 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const compression = require('compression');
+var favicon = require('serve-favicon');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const db = require('./database');
 const sessionStore = new SequelizeStore({ db });
 const PORT = process.env.PORT || 8080;
 const app = express();
-const cors = require('cors');
 const socketio = require('socket.io');
 module.exports = app;
 
@@ -23,29 +23,19 @@ const createApp = () => {
     // compression middleware
     app.use(compression());
 
-    app.use(cors());
-
     // api routes
     app.use('/api', require('./api'));
 
+    // favicon
+    app.use(favicon(path.join(__dirname, '..', 'src', 'public', 'favicon.ico')));
     // static file-serving middleware
-    app.use(express.static(path.join(__dirname, '..', 'public')));
-
-    // any remaining requests with an extension (.js, .css, etc.) send 404
-    app.use((req, res, next) => {
-        if (path.extname(req.path).length) {
-            const err = new Error('Not found');
-            err.status = 404;
-            next(err);
-        } else {
-            next();
-        }
-    });
-
-    // sends index.html
-    app.use('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '..', 'public/index.html'));
-    });
+    app.use(express.static(path.join(__dirname, '..', 'src', 'public','pages')));
+    // static css files
+    app.use(express.static(path.join(__dirname, '..', 'src', 'public','styles')));
+    // js files
+    app.use(express.static(path.join(__dirname, '..', 'src')));
+    // dependencies
+    app.use(express.static(path.join(__dirname, '..', 'node_modules')));
 
     // error handling endware
     app.use((err, req, res, next) => {
@@ -64,12 +54,7 @@ const startListening = () => {
     );
 
     // set up our socket control center
-    const io = socketio(server, {
-        cors: {
-            origin: 'http://localhost:8081',
-            credentials: true,
-        },
-    });
+    const io = socketio(server);
     require('./socket')(io);
 };
 
