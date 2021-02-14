@@ -13,7 +13,10 @@ const db = new Sequelize(
     // for heroku app db is 'postgresql-curly-60237'
     {
         logging: false,
-        ssl: getSslConfig()
+        ssl: getSslConfig(),
+        dialectOptions: {
+            native: getSslConfig()
+        }
     }
 );
 module.exports = db;
