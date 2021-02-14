@@ -1,17 +1,26 @@
 const soloRoundState = {
   clues: [],
+  score: 0
 };
 
-const socket = io('http://localhost:8080');
-socket.on('round over', () => (celeb.innerHTML = 'This round is over!'));
+const socket = io();
+socket.on('round over', () => {
+  $celeb.textContent = 'This round is over!';
+  $hint.textContent = ''
+});
+
+// This is not working
+socket.on('remove clue', (clue) => {
+  console.log(`got request to remove ${clue}`)
+});
 
 document.addEventListener('DOMContentLoaded', async function (event) {
-  const clues = await fetch('http://localhost:8080/api/clues').then((res) =>
+  const clues = await fetch('/api/clues').then((res) =>
     res.json()
   );
 
   soloRoundState.clues = clues;
-  
+
   console.log(`GOT THE STRINGIFIED CLUES: ${JSON.stringify(clues)}`);
 });
 
@@ -24,9 +33,14 @@ let prevClue;
 let clickedOnce = false
 $startRound.addEventListener('click', function (evt) {
   if (!clickedOnce) startTimer();
-  if (prevClue) soloRoundState.clues = soloRoundState.clues.filter(
-    (el) => el !== prevClue
-  );
+  if (prevClue) {
+    soloRoundState.clues = soloRoundState.clues.filter((el) => el !== prevClue
+    );
+    // Maybe do a broadcast here instead of hitting the server
+    socket.emit('remove clue', { prevClue });
+    soloRoundState.score += 1;
+};
+  // TODO: set once; gets set on every click -
   $startRound.textContent = 'NEXT CELEBRITY!';
 
   if (soloRoundState.clues.length > 0) {
@@ -39,17 +53,12 @@ $startRound.addEventListener('click', function (evt) {
     $hint.innerHTML = currentClue.hint;
     clickedOnce = true;
     prevClue = currentClue;
-
-    socket.emit('remove clue', [
-      {
-        clue: currentClue
-      }
-    ]);
   } else {
     $buttonListParent.append($nextRoundButton);
-    $celeb.innerHTML = 'This round is over!';
-    $hint.innerHTML = '';
-    socket.emit('end round');
+    $celeb.textContent = 'This round is over!';
+    $hint.textContent = '';
+    socket.emit('round over');
+    $startRound.remove();
   }
 });
 
@@ -57,9 +66,9 @@ const $nextRoundButton = document.createElement('button');
 $nextRoundButton.id = 'round-finished';
 $nextRoundButton.className = 'button';
 $nextRoundButton.setAttribute('formaction', 'passingRound.html');
-$nextRoundButton.innerHTML = 'Round Finished!';
+$nextRoundButton.textContent = 'Round Finished!';
 
-
+// TODO - MOVE timer code
 // Timer Code Start. Stolen from https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/
 function formatTimeLeft(time) {
   // The largest round integer less than or equal to the result of time divided being by 60.
@@ -103,7 +112,7 @@ function startTimer() {
       clearInterval(timerInterval);
       $startRound.textContent = 'Start The Round!';
       $celeb.textContent = 'Your Turn Is Over';
-      $hint.textContent = '';
+      $hint.textContent = `You got ${soloRoundState.score} on your turn`;
     }
     setCircleDasharray();
     setRemainingPathColor(timeLeft)
