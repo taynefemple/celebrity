@@ -28,13 +28,13 @@ const createApp = () => {
 
     // favicon
     app.use(favicon(path.join(__dirname, '..', 'src', 'public', 'favicon.ico')));
-    // static file-serving middleware
+    // static html files
     app.use(express.static(path.join(__dirname, '..', 'src', 'public','pages')));
     // static css files
     app.use(express.static(path.join(__dirname, '..', 'src', 'public','styles')));
     // js files
     app.use(express.static(path.join(__dirname, '..', 'src')));
-    // dependencies
+    // dependencies i.e. sockets
     app.use(express.static(path.join(__dirname, '..', 'node_modules')));
 
     // error handling endware
@@ -58,7 +58,9 @@ const startListening = () => {
     require('./socket')(io);
 };
 
-const syncDb = () => db.sync();
+const syncDb = () => db.sync(
+    {force: true}
+);
 
 async function bootApp() {
     await sessionStore.sync();

@@ -7,20 +7,21 @@ const databaseName =
 function getSslConfig (){
     return process.env.NODE_ENV === 'production'
 }
-const sslConfig = getSslConfig
+const sslConfig = getSslConfig()
+console.log(sslConfig)
 
 const db = new Sequelize(
-    `${process.env.DATABASE_URL}?sslmode=require` || `postgres://localhost:5432/${databaseName}`,
+    process.env.DATABASE_URL || `postgres://localhost:5432/${databaseName}`,
     // for heroku app db is 'postgresql-curly-60237'
     {
         dialect: 'postgres',
-        ssl: true,
+        ssl: sslConfig,
         logging: false,
         dialectOptions: {
-            ssl: {
-                require: true,
-                rejectUnauthorized: false,
-            },
+            // ssl: {
+            //     require: sslConfig,
+            //     rejectUnauthorized: false,
+            // },
         }
     }
 );
