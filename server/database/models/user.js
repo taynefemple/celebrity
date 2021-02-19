@@ -8,6 +8,10 @@ const User = db.define('user', {
     },
     teamId: {
         type: Sequelize.INTEGER,
+    },
+    turn: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
     }
 });
 

@@ -6,7 +6,7 @@ module.exports = router;
 router.get('/', async (req, res, next) => {
     try {
         const clues = await Clue.findAll({
-            attributes: ['id', 'name', 'hint'],
+            attributes: ['id', 'celebName', 'hint'],
         });
         res.json(clues);
     } catch (err) {
