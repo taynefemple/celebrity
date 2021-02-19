@@ -14,8 +14,14 @@ router.get('/', async (req, res, next) => {
 });
 
 router.put('/', async (req, res, next) => {
+    console.log(req.body)
     try {
-        const [user] = User.findOrCreate(req.body);
+        const [user] = await User.findOrCreate({
+            where: {
+                name: req.body.name,
+                }
+            });
+        user.setTeam(+req.body.teamId)
         res.json(user);
     } catch (err) {
         next(err);

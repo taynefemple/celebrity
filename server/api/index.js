@@ -3,6 +3,7 @@ module.exports = router;
 
 router.use('/users', require('./users'));
 router.use('/clues', require('./clues'));
+router.use('/teams', require('./teams'));
 
 router.use((req, res, next) => {
     const error = new Error('Not Found');

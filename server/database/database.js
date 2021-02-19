@@ -7,8 +7,7 @@ const databaseName =
 function getSslConfig (){
     return process.env.NODE_ENV === 'production'
 }
-const sslConfig = getSslConfig()
-console.log(sslConfig)
+const sslConfig = getSslConfig();
 
 const db = new Sequelize(
     process.env.DATABASE_URL || `postgres://localhost:5432/${databaseName}`,

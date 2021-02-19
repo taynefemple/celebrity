@@ -11,8 +11,8 @@
         <header>
             <h1>Welcome to Celebrity!</h1>
         </header>
-        <main>
-            <section>
+        <main id="container">
+            <section class="welcome">
                 <form>
                     <div class="interaction">
                         <label class="label" for="player-name">
@@ -22,38 +22,15 @@
                         <label class="label" for="team">
                             Select your team
                         </label>
-                            <select>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                            <select id="team">
+                                <option value=1>1</option>
+                                <option value=2>2</option>
                             </select>
                     </div>
                     <div class="interaction">
-                        <label class="label" for="celeb">
-                            Add a celebrity here:
-                        </label>
-                        <input type="text" id="celeb" />
-                        <label class="label" for="hint">
-                            Hint (optional):
-                        </label>
-                        <input type="text" id="hint" />
-                        <button class="add-celeb button" type="button">
+                        <button class="signin button" type="button">
                             Submit
                         </button>
-                    </div>
-                    <div class="interaction">
-                        <label class="label" for="start-game"
-                            >I'm ready to play!</label
-                        >
-                        <form>
-                            <button
-                                class="button"
-                                id="start-game"
-                                type="submit"
-                                formaction="./soloRound.html"
-                            >
-                                Let's go!
-                            </button>
-                        </form>
                     </div>
                 </form>
             </section>
