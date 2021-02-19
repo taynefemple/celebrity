@@ -17,7 +17,14 @@ router.post('/', async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
     try {
-        const score = await Team.update(req.body)
+        const team = await Team.findOne({
+            where: {
+                id: req.body.teamId
+            }
+        });
+        team.score = req.body.score;
+        const score = await team.save();
+        res.json(score);
     } catch (err) {
         next(err);
     }

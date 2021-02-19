@@ -17,7 +17,7 @@ function formatTimeLeft(time) {
   }
 
   // Start with an initial value of 20 seconds
-  const TIME_LIMIT = 15;
+  const TIME_LIMIT = 5;
 
   // Initially, no time has passed, but this will count up
   // and subtract from the TIME_LIMIT
@@ -29,6 +29,7 @@ function formatTimeLeft(time) {
 
   let timerInterval = null;
 
+//   figure out way to refresh timer on consecutive turns
   function startTimer() {
     timerInterval = setInterval(() => {
 
@@ -43,6 +44,17 @@ function formatTimeLeft(time) {
         $startRound.textContent = 'Start The Round!';
         $celeb.textContent = 'Your Turn Is Over';
         $hint.textContent = `You got ${soloRoundState.score} on your turn`;
+        fetch('/api/teams', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                teamId: soloRoundState.teamId,
+                score: soloRoundState.score
+            }),
+        });
+        // update turn here as well
       }
       setCircleDasharray();
       setRemainingPathColor(timeLeft)

@@ -22,3 +22,21 @@ router.post('/', async (req, res, next) => {
         next(err);
     }
 });
+
+router.put('/', async (req, res, next) => {
+    try {
+        console.log(`GOT CLUE TO MARL INACTIVE: ${JSON.stringify(req.body)}`)
+        const clue = await Clue.findOne({
+            where: {
+                id: req.body.id
+            }
+        });
+        clue.active = false;
+        const inactiveClue = await clue.save();
+        res.json(inactiveClue);
+    } catch (err) {
+        next(err);
+    }
+});
+
+
