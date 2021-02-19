@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../database/models');
+const { User, Team } = require('../database/models');
 module.exports = router;
 
 router.get('/', async (req, res, next) => {
@@ -19,9 +19,9 @@ router.put('/', async (req, res, next) => {
         const [user] = await User.findOrCreate({
             where: {
                 name: req.body.name,
-                }
-            });
-        user.setTeam(+req.body.teamId)
+                teamId: req.body.teamId
+                },
+        });
         res.json(user);
     } catch (err) {
         next(err);

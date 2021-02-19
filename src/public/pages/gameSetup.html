@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebrity</title>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+    <header>
+        <h1>Submit celebrity names for the game!</h1>
+    </header>
+    <main id="container">
+        <section class="welcome">
+            <form>
+                <div class="interaction setup">
+                    <label class="label" for="celeb">
+                        Add a celebrity here:
+                    </label>
+                    <input type="text" id="celeb" />
+                    <label class="label" for="hint">
+                        Hint (optional):
+                    </label>
+                    <input type="text" id="hint" />
+                    <button class="add-celeb button" type="button">
+                        Submit
+                    </button>
+                </div>
+                <div class="interaction">
+                    <label class="label" for="start-game">
+                    I'm ready to play!
+                    </label>
+                    <button
+                    class="button"
+                    id="start-game"
+                    type="submit"
+                    formaction="./soloRound.html"
+                    >
+                        Let's go!
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <script src="gameSetup.js" defer></script>
+</body>
+</html>
