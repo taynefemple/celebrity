@@ -8,19 +8,20 @@ async function seed() {
     console.log('db synced!');
 
     const users = await Promise.all([
-        User.create({ name: 'Tayne Femple', team: 'Masters' }),
-        User.create({ name: 'Flo Jo', team: 'Masters' }),
-        User.create({ name: 'Marky Mark', team: 'Losers' }),
-        User.create({ name: 'Kerry Washingon', team: 'Losers' }),
+        User.create({ name: 'Tayne Femple', team: '2' }),
+        User.create({ name: 'Flo Jo', team: '2' }),
+        User.create({ name: 'Marky Mark', team: '1' }),
+        User.create({ name: 'Kerry Washingon', team: '1' }),
     ]);
 
     const clues = await Promise.all([
-        Clue.create({ name: 'Sean Connery', hint: 'Hates Alec Trebek' }),
-        Clue.create({ name: 'Big Birde' }),
-        Clue.create({ name: 'Carl Sagan', hint: 'space guy' }),
-        Clue.create({ name: 'Barack Obama', hint: '' }),
-        Clue.create({ name: 'Barack Obama', hint: '' }),
-        Clue.create({ name: 'Barack Obama', hint: '' }),
+        Clue.create({ celebName: 'Sean Connery', hint: 'Hates Alex Trebek' }),
+        Clue.create({ celebName: 'Big Bird' }),
+        Clue.create({ celebName: 'Carl Sagan', hint: 'space guy' }),
+        Clue.create({ celebName: 'Barack Obama', hint: '' }),
+        Clue.create({ celebName: 'Michelle Obama', hint: '' }),
+        Clue.create({ celebName: 'Malia Obama', hint: '' }),
+        Clue.create({ celebName: 'Malala', hint: '' }),
     ]);
 
     console.log(`seeded ${users.length} users`);

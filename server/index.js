@@ -59,7 +59,7 @@ const startListening = () => {
 };
 
 const syncDb = () => db.sync(
-    {force: true}
+    // {force: true}
 );
 
 async function bootApp() {

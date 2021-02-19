@@ -4,11 +4,20 @@ const state = {
     team: '',
 };
 
+document.addEventListener('DOMContentLoaded', async function () {
+    fetch('/api/teams', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+});
+
 const nameInput = document.querySelector('#player-name');
-nameInput.oninput = function (evt) {
+nameInput.addEventListener('input', function (evt) {
     state.playerName = evt.target.value;
     // set this in local storage
-};
+});
 
 const teamSelect = document.querySelector('#team');
 teamSelect.addEventListener('change', function (evt) {
@@ -17,11 +26,10 @@ teamSelect.addEventListener('change', function (evt) {
     console.log(`Here is the selected team: ${evt.target.value}`)
 });
 
-const $welcome = document.querySelector('.welcome');
-const $container = document.getElementById('container');
-
-const signInButton = document.querySelector('.signin');
+const signInButton = document.querySelector('#signin-submit');
 signInButton.addEventListener('click', async function (evt) {
+    window.sessionStorage.setItem('player', `${state.playerName}`);
+    window.sessionStorage.setItem('team', `${state.team}`);
     const response = await fetch('/api/users', {
         method: 'PUT',
         headers: {
@@ -29,9 +37,11 @@ signInButton.addEventListener('click', async function (evt) {
         },
         body: JSON.stringify({
             name: state.playerName,
-            teamId: state.team
+            teamId: +state.team
         }),
     });
-    const foo = await response.json();
+
+
+    const foo = JSON.stringify(response);
     console.log(`Here is the response from Users create: ${foo}`);
-}); 
+});
