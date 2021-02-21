@@ -1,17 +1,17 @@
 'use strict';
 
 const db = require('../database');
-const { User, Clue } = require('../database/models');
+const { User, Clue, Team } = require('../database/models');
 
 async function seed() {
     await db.sync({ force: true });
     console.log('db synced!');
 
     const users = await Promise.all([
-        User.create({ name: 'Tayne Femple', team: '2' }),
-        User.create({ name: 'Flo Jo', team: '2' }),
-        User.create({ name: 'Marky Mark', team: '1' }),
-        User.create({ name: 'Kerry Washingon', team: '1' }),
+        User.create({ name: 'Tayne Femple', teamId: '2' }),
+        User.create({ name: 'Flo Jo', teamId: '2' }),
+        User.create({ name: 'Marky Mark', teamId: '1' }),
+        User.create({ name: 'Kerry Washingon', teamId: '1' }),
     ]);
 
     const clues = await Promise.all([
@@ -24,8 +24,14 @@ async function seed() {
         Clue.create({ celebName: 'Malala', hint: '' }),
     ]);
 
+    const team = await Team.bulkCreate([
+        {score: 0},
+        {score: 0}
+    ]);
+
     console.log(`seeded ${users.length} users`);
     console.log(`seeded ${clues.length} clues`);
+    console.log('created 2 teams');
     console.log(`seeded successfully`);
 }
 
