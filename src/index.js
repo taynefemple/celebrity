@@ -41,7 +41,6 @@ signInButton.addEventListener('click', async function (evt) {
         }),
     });
 
-
     const foo = JSON.stringify(response);
     console.log(`Here is the response from Users create: ${foo}`);
 });

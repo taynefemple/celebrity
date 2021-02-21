@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async function (event) {
 
   soloRoundState.clues = clues;
 
-  console.log(`GOT THE STRINGIFIED CLUES: ${JSON.stringify(clues)}`);
+  console.log(`GOT THE STRINGIFIED CLUES!: ${JSON.stringify(clues)}`);
 });
 
 soloRoundState.teamId = window.sessionStorage.getItem('team')
@@ -85,4 +85,3 @@ $startRound.addEventListener('click', async function (evt) {
     $startRound.remove();
   };
 });
-
