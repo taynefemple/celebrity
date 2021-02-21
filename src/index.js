@@ -4,14 +4,15 @@ const state = {
     team: '',
 };
 
-document.addEventListener('DOMContentLoaded', async function () {
-    fetch('/api/teams', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    });
-});
+// HACK - team creation needs to be elsewhere
+// document.addEventListener('DOMContentLoaded', async function () {
+//     fetch('/api/teams', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//     });
+// });
 
 const nameInput = document.querySelector('#player-name');
 nameInput.addEventListener('input', function (evt) {
