@@ -14,13 +14,13 @@ router.get('/', async (req, res, next) => {
 });
 
 router.put('/', async (req, res, next) => {
-    console.log(req.body)
+    console.log(req.body);
     try {
         const [user] = await User.findOrCreate({
             where: {
                 name: req.body.name,
-                teamId: req.body.teamId
-                },
+                teamId: req.body.teamId,
+            },
         });
         res.json(user);
     } catch (err) {

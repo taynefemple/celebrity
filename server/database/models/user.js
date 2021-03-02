@@ -11,8 +11,8 @@ const User = db.define('user', {
     },
     turn: {
         type: Sequelize.BOOLEAN,
-        defaultValue: false
-    }
+        defaultValue: false,
+    },
 });
 
 module.exports = User;

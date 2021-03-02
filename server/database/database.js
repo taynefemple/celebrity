@@ -4,8 +4,8 @@ const pkg = require('../../package.json');
 const databaseName =
     pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '');
 
-function getSslConfig (){
-    return process.env.NODE_ENV === 'production'
+function getSslConfig() {
+    return process.env.NODE_ENV === 'production';
 }
 const sslConfig = getSslConfig();
 
@@ -21,7 +21,7 @@ const db = new Sequelize(
                 require: sslConfig,
                 rejectUnauthorized: false,
             },
-        }
+        },
     }
 );
 module.exports = db;

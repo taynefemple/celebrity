@@ -11,8 +11,8 @@ const Clue = db.define('clue', {
     },
     active: {
         type: Sequelize.BOOLEAN,
-        defaultValue: true
-    }
+        defaultValue: true,
+    },
 });
 
 module.exports = Clue;

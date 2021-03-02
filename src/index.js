@@ -24,7 +24,7 @@ const teamSelect = document.querySelector('#team');
 teamSelect.addEventListener('change', function (evt) {
     // set this in local storage
     state.team = evt.target.value;
-    console.log(`Here is the selected team: ${evt.target.value}`)
+    console.log(`Here is the selected team: ${evt.target.value}`);
 });
 
 const signInButton = document.querySelector('#signin-submit');
@@ -34,11 +34,11 @@ signInButton.addEventListener('click', async function (evt) {
     const response = await fetch('/api/users', {
         method: 'PUT',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             name: state.playerName,
-            teamId: +state.team
+            teamId: +state.team,
         }),
     });
 

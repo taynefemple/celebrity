@@ -3,4 +3,3 @@
 
 const db = require('../database');
 const { User, Clue } = require('../database/models');
-

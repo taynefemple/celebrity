@@ -24,10 +24,7 @@ async function seed() {
         Clue.create({ celebName: 'Malala', hint: '' }),
     ]);
 
-    const team = await Team.bulkCreate([
-        {score: 0},
-        {score: 0}
-    ]);
+    const team = await Team.bulkCreate([{ score: 0 }, { score: 0 }]);
 
     console.log(`seeded ${users.length} users`);
     console.log(`seeded ${clues.length} clues`);

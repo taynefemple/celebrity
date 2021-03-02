@@ -7,7 +7,7 @@ router.get('/', async (req, res, next) => {
     try {
         const clues = await Clue.findAll({
             where: {
-                active: true
+                active: true,
             },
             attributes: ['id', 'celebName', 'hint'],
         });
@@ -28,11 +28,11 @@ router.post('/', async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
     try {
-        console.log(`GOT CLUE TO MARL INACTIVE: ${JSON.stringify(req.body)}`)
+        console.log(`GOT CLUE TO MARK INACTIVE: ${JSON.stringify(req.body)}`);
         const clue = await Clue.findOne({
             where: {
-                id: req.body.id
-            }
+                id: req.body.id,
+            },
         });
         clue.active = false;
         const inactiveClue = await clue.save();
@@ -41,5 +41,3 @@ router.put('/', async (req, res, next) => {
         next(err);
     }
 });
-
-

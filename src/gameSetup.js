@@ -7,7 +7,7 @@ const state = {
 // Input fields
 const celebInput = document.querySelector('#celeb');
 celebInput.addEventListener('input', function (evt) {
-    console.log(evt.target.value)
+    console.log(evt.target.value);
     state.celebName = evt.target.value;
 });
 
@@ -22,11 +22,11 @@ celebSubmit.addEventListener('click', async function (evt) {
     const response = await fetch('/api/clues', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             celebName: state.celebName,
-            hint: state.hint
+            hint: state.hint,
         }),
     });
     const foo = await response.json();
