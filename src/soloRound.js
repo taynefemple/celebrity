@@ -25,12 +25,17 @@ soloRoundState.teamId = window.sessionStorage.getItem('team');
 soloRoundState.playerName = window.sessionStorage.getItem('player');
 
 // fetch players turn
-const turnResponse = await fetch(`/api/users/${soloRoundState.playerName}`);
-const turnResponseJson = await turnResponse.json();
-soloRoundState.turn = turnResponseJson.turn;
+const getTurn = async () => {
+    const turnResponse = await fetch(`/api/users/${soloRoundState.playerName}`);
+    const turnResponseJson = await turnResponse.json();
+    console.log(`inside getTurn. Here is the turnResponseJson: ${JSON.stringify(turnResponseJson)}`)
+    return turnResponseJson && turnResponseJson.turn;
+}
+soloRoundState.turn = getTurn();
+console.log(`HERE IS THE TURN RESPONSE: ${soloRoundState.turn}`);
 
 document.addEventListener('DOMContentLoaded', async function (event) {
-    //  don't chain off await!!!
+    //  TODO don't chain off await!!!
     const clues = await fetch('/api/clues').then((res) => res.json());
 
     soloRoundState.clues = clues;
@@ -40,8 +45,8 @@ document.addEventListener('DOMContentLoaded', async function (event) {
 
 // create overlay when it isn't player's turn
 const $overlay = document.createElement('div');
-$overlay.className = 'blackoutoverl';
-if (soloRoundState.turn) document.body.append($overlay);
+$overlay.className = 'blackout';
+if (!soloRoundState.turn) document.body.append($overlay);
 
 const $celeb = document.querySelector('.celeb');
 const $startRound = document.querySelector('#round-start');

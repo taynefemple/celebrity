@@ -13,6 +13,22 @@ router.get('/', async (req, res, next) => {
     }
 });
 
+// TODO -- add route for setting turn to false
+// router.put yadda yadda
+router.get('/:playerName', async (req, res, next) => {
+    try {
+        const userTurn = await User.findOne({
+            where: {
+                name: req.params.playerName,
+            },
+            attributes: ['turn'],
+        });
+        res.json(userTurn);
+    } catch (err) {
+        next(err);
+    }
+});
+
 router.put('/', async (req, res, next) => {
     console.log(req.body);
     try {

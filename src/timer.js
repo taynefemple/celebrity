@@ -30,7 +30,7 @@ $timeRemaining.innerHTML = `${formatTimeLeft(timeLeft)}`;
 let timerInterval = null;
 
 //   figure out way to refresh timer on consecutive turns
-function startTimer() {
+async function startTimer() {
     timerInterval = setInterval(() => {
         // The amount of time passed increments by one
         timePassed = timePassed += 1;
@@ -45,7 +45,7 @@ function startTimer() {
             $startRound.textContent = 'Start The Round!';
             $celeb.textContent = 'Your Turn Is Over';
             $hint.textContent = `You got ${soloRoundState.score} on your turn`;
-            fetch('/api/teams', {
+            await fetch('/api/teams', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -56,6 +56,15 @@ function startTimer() {
                 }),
             });
             // update turn here as well
+            // await fetch(`api/users/${soloRoundState.playerName}`, {
+                // method: 'PUT',
+                // headers: {
+                //     'Content-Type': 'application/json',
+                // },
+                // body: JSON.stringify({
+                //     turn: false,
+                // }),
+            // }
         }
         setCircleDasharray();
         setRemainingPathColor(timeLeft);
